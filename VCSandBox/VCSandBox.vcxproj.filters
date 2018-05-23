@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="entities">
+      <UniqueIdentifier>{190c4b78-0593-48b0-94fe-b8f9afa5f74a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="gamelogic">
+      <UniqueIdentifier>{ed4707a3-6404-4385-9255-f288dcf6b959}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="models">
+      <UniqueIdentifier>{2fd2b33e-818e-4fa4-ab4a-52845169c10c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="patches">
+      <UniqueIdentifier>{2b29fbd5-b798-4733-81df-339696fa5f23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor">
+      <UniqueIdentifier>{1e3f1035-bd9d-4770-955a-f018b0601b85}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="CModelManager.cpp">
+      <Filter>models</Filter>
+    </ClCompile>
+    <ClCompile Include="CPopulationManager.cpp">
+      <Filter>gamelogic</Filter>
+    </ClCompile>
+    <ClCompile Include="CPedManager.cpp">
+      <Filter>entities</Filter>
+    </ClCompile>
+    <ClCompile Include="CPlayerPedManager.cpp">
+      <Filter>entities</Filter>
+    </ClCompile>
+    <ClCompile Include="CVehicleManager.cpp">
+      <Filter>entities</Filter>
+    </ClCompile>
+    <ClCompile Include="CEntityManager.cpp">
+      <Filter>entities</Filter>
+    </ClCompile>
+    <ClCompile Include="CGamePatches.cpp">
+      <Filter>patches</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="main.h" />
+    <ClInclude Include="CModelManager.h">
+      <Filter>models</Filter>
+    </ClInclude>
+    <ClInclude Include="CPopulationManager.h">
+      <Filter>gamelogic</Filter>
+    </ClInclude>
+    <ClInclude Include="CPedManager.h">
+      <Filter>entities</Filter>
+    </ClInclude>
+    <ClInclude Include="CPlayerPedManager.h">
+      <Filter>entities</Filter>
+    </ClInclude>
+    <ClInclude Include="CVehicleManager.h">
+      <Filter>entities</Filter>
+    </ClInclude>
+    <ClInclude Include="CEntityManager.h">
+      <Filter>entities</Filter>
+    </ClInclude>
+    <ClInclude Include="CGamePatches.h">
+      <Filter>patches</Filter>
+    </ClInclude>
+    <ClInclude Include="hooklibrary.h">
+      <Filter>vendor</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\detours\detours.h">
+      <Filter>vendor</Filter>
+    </ClInclude>
+    <ClInclude Include="rwd3d9.h" />
+  </ItemGroup>
+</Project>
