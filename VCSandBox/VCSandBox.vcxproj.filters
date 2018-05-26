@@ -40,6 +40,7 @@
     <ClCompile Include="CGamePatches.cpp">
       <Filter>patches</Filter>
     </ClCompile>
+    <ClCompile Include="CWeaponManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h" />
@@ -71,5 +72,6 @@
       <Filter>vendor</Filter>
     </ClInclude>
     <ClInclude Include="rwd3d9.h" />
+    <ClInclude Include="CWeaponManager.h" />
   </ItemGroup>
 </Project>

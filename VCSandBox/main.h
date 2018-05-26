@@ -39,6 +39,8 @@ using namespace Hook;
 #include "CPlayerPedManager.h"
 #include "CPopulationManager.h"
 #include "CGamePatches.h"
+#include "CWeaponManager.h"
+
 
 //externals
 extern CModelManager		*gModelManager;
@@ -47,8 +49,8 @@ extern CPedManager			*gPedManager;
 extern CPlayerPedManager	*gPlayerPedManager;
 extern CPopulationManager	*gPopulationManager;
 
-
-// that enum is from VC maybe right
+ 
+// that enum is from SA maybe right
 
 enum PLUGIN_API eCamMode : unsigned short {
 	MODE_NONE = 0x0,
@@ -118,3 +120,11 @@ enum PLUGIN_API eCamMode : unsigned short {
 	MODE_DW_PLANECAM3 = 0x40,
 	MODE_AIMWEAPON_ATTACHED = 0x41
 };
+typedef struct _CAMERA_AIM
+{
+	CVector LookFront;
+	CVector Source;
+	CVector SourceBeforeLookBehind;
+	CVector LookUp;
+
+} CAMERA_AIM;

@@ -10,8 +10,6 @@ public:
 	void GameLogicPatches();
 	void WantedPatches();
 	void CrashfixHooks();
-	void GameplayPatches();
-	void InputPatches();
 	void PopulationPatches();
 	void LimitPatches();
 };

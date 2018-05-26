@@ -1,5 +1,9 @@
 #include "main.h"
-
+CModelManager			*gModelManager = NULL;
+CVehicleManager			*gVehicleManager = NULL;
+CPedManager				*gPedManager = NULL;
+CPlayerPedManager		*gPlayerPedManager = NULL;
+CPopulationManager		*gPopulationManager = NULL;
 
 
 class VCSandBox {

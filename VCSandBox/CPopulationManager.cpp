@@ -205,11 +205,20 @@ CVector CPopulationManager::GetPedCreationCoords(CVector pos, bool vehicle)
 	out.y += yAddition;
 
 	CNodeAddress pathLink;
-	CNodeAddress * node = nullptr;
 	//CNodeAddress * FindNodeClosestToCoors(CPathFind *g_pathfind, CNodeAddress *pathLink, float X, float Y, float Z, int nodeType, float maxDistance, __int16 unk2, int unk3, __int16 unk4, __int16 bBoatsOnly, int unk6)
-	if (!vehicle)node = plugin::CallMethodAndReturn<CNodeAddress*, 0x437150, CPathFind*, CNodeAddress*, CVector, int, float, INT16, int, INT16, INT16, int>(&ThePaths, &pathLink, out, 1, 999999.0, 1, 0, 0, 0, 0);
-	else node = plugin::CallMethodAndReturn<CNodeAddress*, 0x437150, CPathFind*, CNodeAddress*, CVector, int, float, INT16, int, INT16, INT16, int>(&ThePaths, &pathLink, out, 0, 999999.0, 1, 0, 0, 0, 0);
-	CPathNode * pathNode = (CPathNode*)node;
-	CVector nodepos = { (float)pathNode->m_wPosX, (float)pathNode->m_wPosY, (float)pathNode->m_wPosZ };
-	return nodepos;
+	//	if (!vehicle)path = plugin::CallMethodAndReturn<CNodeAddress*, 0x437150, CPathFind*, CNodeAddress*, CVector, int, float, INT16, int, INT16, INT16, int>(&ThePaths, &pathLink, out, 1, 999999.0, 1, 0, 0, 0, 0);
+	//	else path = plugin::CallMethodAndReturn<CNodeAddress*, 0x437150, CPathFind*, CNodeAddress*, CVector, int, float, INT16, int, INT16, INT16, int>(&ThePaths, &pathLink, out, 0, 999999.0, 1, 0, 0, 0, 0);
+
+
+
+	int path = ThePaths.FindNodeClosestToCoors({ pos.x + xAddition, pos.y + yAddition, pos.z }, 1, 10000.0f, 1, 0, 0, 0);
+	CPathNode node = ThePaths.nodes[path];
+		//return &ThePaths->m_pPathNodes[nodeInfo.m_wAreaId][*&nodeInfo >> 16];
+
+
+	return { (float)node.m_wPosX, (float)node.m_wPosY, (float)node.m_wPosZ };
+
 }
+/*
+
+*/

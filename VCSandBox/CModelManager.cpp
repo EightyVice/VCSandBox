@@ -1,6 +1,8 @@
 #include "main.h"
 
-CModelManager::CModelManager() {}
+CModelManager::CModelManager() {
+	printf("[CMODELMANAGER] Started.\n");
+}
 
 bool CModelManager::IsModelLoaded(int modelid)
 {

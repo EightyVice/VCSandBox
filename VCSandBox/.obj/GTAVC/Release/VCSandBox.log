@@ -1,6 +1,4 @@
-﻿CPedManager.obj : error LNK2001: unresolved external symbol "class CModelManager * gModelManager" (?gModelManager@@3PAVCModelManager@@A)
-CPlayerPedManager.obj : error LNK2001: unresolved external symbol "class CPlayerPedManager * gPlayerPedManager" (?gPlayerPedManager@@3PAVCPlayerPedManager@@A)
-CPopulationManager.obj : error LNK2001: unresolved external symbol "class CPedManager * gPedManager" (?gPedManager@@3PAVCPedManager@@A)
-CPopulationManager.obj : error LNK2001: unresolved external symbol "class CVehicleManager * gVehicleManager" (?gVehicleManager@@3PAVCVehicleManager@@A)
-CPopulationManager.obj : error LNK2001: unresolved external symbol "class CPopulationManager * gPopulationManager" (?gPopulationManager@@3PAVCPopulationManager@@A)
-D:\GTAVC\scripts\VCSandBox.asi : fatal error LNK1120: 5 unresolved externals
+﻿  main.cpp
+  Generating code
+  Finished generating code
+  VCSandBox.vcxproj -> D:\GTAVC\scripts\VCSandBox.asi

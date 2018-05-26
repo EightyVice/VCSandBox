@@ -78,6 +78,7 @@
       <AdditionalLibraryDirectories>$(ProjectDir)\vendor\detours.lib;$(PLUGIN_SDK_DIR)\output\lib\;$(RWD3D9_DIR)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>plugin_vc.lib;d3d9.lib;d3dx9.lib;detours.lib;rwd3d9.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='GTAVC zDebug|Win32'">
@@ -107,6 +108,7 @@
     <ClCompile Include="CPlayerPedManager.cpp" />
     <ClCompile Include="CPopulationManager.cpp" />
     <ClCompile Include="CVehicleManager.cpp" />
+    <ClCompile Include="CWeaponManager.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -117,6 +119,7 @@
     <ClInclude Include="CPlayerPedManager.h" />
     <ClInclude Include="CPopulationManager.h" />
     <ClInclude Include="CVehicleManager.h" />
+    <ClInclude Include="CWeaponManager.h" />
     <ClInclude Include="hooklibrary.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="rwd3d9.h" />

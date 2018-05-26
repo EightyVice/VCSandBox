@@ -4,32 +4,17 @@
 
 CGamePatches::CGamePatches()
 {
+	printf("[CGAMEPATCHES] Processing...");
 	this->MenuPatches();
 	this->PopulationPatches();
 	this->RunningScriptHook();
 	this->GameLogicPatches();
 	this->WantedPatches();
 	this->CrashfixHooks();
-	this->GameplayPatches();
-	this->InputPatches();
+
 	this->LimitPatches();
+	printf("[CGAMEPATCHES] Main Patches Done");
 }
-/* NOT IN VC
-void SimulateCopyrightScreen()
-{
-	CLoadingScreen::m_currDisplayedSplash = 0;
-	CLoadingScreen::m_timeSinceLastScreen -= 1000.f;
-	CLoadingScreen::m_bFadeInNextSplashFromBlack = 1;
-}
-*/
-
-
-void Hooked_LoadingScreen(char * message, char * message2)
-{
-	printf("Loading screen: %s %s\n", (message ? message : "0"), (message2 ? message2 : "0"));
-	return;
-}
-
 
 
 static bool menuFirstProcessed = false;
@@ -77,11 +62,11 @@ void Hook_CRunningScript__Process()
 
 
 		// Change player model ID
-		MemWrite<u8>(0x5384FA + 1, 7); //Not important if we set a new one after spawn
+		MemWrite<u8>(0x5384FA + 1, 1); //Not important if we set a new one after spawn
 
 									   // Setup own ped on 0 game ID
 		CPlayerPed::SetupPlayerPed(0);
-		
+
 
 		// Set player position
 		FindPlayerPed()->m_placement.pos = { 531.629761f, 606.497253f, 10.901563f };
@@ -95,9 +80,9 @@ void Hook_CRunningScript__Process()
 		CWorld::Players[0].m_bNeverGetsTired = true;
 
 
-	
 
-		
+
+
 		CStreaming::RequestModel(269, 1);
 		CStreaming::RequestModel(270, 1);
 		CStreaming::RequestModel(275, 1);
@@ -127,6 +112,8 @@ void Hook_CRunningScript__Process()
 		CStreaming::RequestModel(288, 1);
 		CStreaming::LoadAllRequestedModels(0);
 
+
+
 		// First tick processed
 		scriptProcessed = true;
 	}
@@ -138,11 +125,15 @@ void CGamePatches::RunningScriptHook()
 {
 	// Don't load the SCM Script
 	MakeShortJmp(0x4506D6, 0x45070E);
+
+	injector::MakeCALL(0x450245, Hook_CRunningScript__Process);
+	
+
 }
 
 void CGamePatches::GameLogicPatches()
 {
-
+	RsGlobal.appName = "ViceCitySandBox";
 
 }
 
@@ -166,16 +157,8 @@ void CGamePatches::CrashfixHooks()
 
 }
 
-void CGamePatches::GameplayPatches()
-{
-
-}
-
-void CGamePatches::InputPatches()
-{
 
 
-}
 
 void CGamePatches::PopulationPatches()
 {
@@ -187,7 +170,7 @@ void CGamePatches::PopulationPatches()
 
 
 
-															   //Nop ped spawns
+	//Nop ped spawns
 	MakeNop(0x53E5C6, 5); //3peds
 	MakeNop(0x53E99B, 5);
 
@@ -214,6 +197,10 @@ void CGamePatches::PopulationPatches()
 
 void CGamePatches::LimitPatches()
 {
+	/*
+
+
+	*/
 	//Pedpool inc
 	MemWrite<s32>(0x4C02C8, 1000);
 	//vehicle pool inc
