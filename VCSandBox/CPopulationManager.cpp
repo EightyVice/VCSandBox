@@ -29,21 +29,12 @@ CPed* testPed = nullptr;
 
 CPopulationManager::CPopulationManager()
 {
-	Events::gameProcessEvent += []
 	{
-		/*if (testPed)
+		Events::gameProcessEvent += []
 		{
-		CWorld::Remove(testPed);
-		operator_delete<CPed>(testPed);
-		testPed = nullptr;
-		}
-		int model = pedModelIds[rand() % 250];
-		printf("Spawning ped: %d with model %d\n", spawned, model);
-		testPed = gPedManager->Create(model, FindPlayerPed(0)->GetPosition()+CVector(2.0, 0.0, 0.0), true);
-		testPed->SetOrientation(0.0, 0.0, 0.0);*
-		spawned++;*/
-		gPopulationManager->Update();
-	};
+			gPopulationManager->Update();
+		};
+	}
 }
 
 
@@ -92,7 +83,7 @@ void CPopulationManager::Update()
 					CWorld::FindObjectsInRange(spawnPos, 10.0, false, &out2, 1, entities, false, false, true, false, false);
 					out += out2;
 
-					int modelID = pedModelIds[rand() % 249];
+					int modelID = 7;
 
 					printf("spawned ped with model %d pool: %d/%d\n", modelID, CPools::ms_pPedPool->GetNoOfUsedSpaces(), CPools::ms_pPedPool->GetNoOfFreeSpaces());
 
@@ -101,23 +92,19 @@ void CPopulationManager::Update()
 
 					if (out == 0)
 					{
-						int vehModel = vehModelIds[rand() % 93];
+						int vehModel = 232;
 						printf("vehmodel: %d\n", vehModel);
 						CVehicle* veh = gVehicleManager->Create(vehModel, CVector(spawnPos.x, spawnPos.y, spawnPos.z + 1.0f));
-
-						/* causes crashes
-						CNodeAddress node1, node2;
-						CCarCtrl::FindNodesThisCarIsNearestTo(veh, node1, node2);
-						CPathNode * pathNode = ThePaths.GetPathNode(node1);
-						CVector toPos = pathNode->GetNodeCoors();
-						*/
 
 						this->vehicles.push_back(veh);
 						vehiclesNeeded--;
 						veh->SetDriver(ped);
 						ped->m_pVehicle = veh;
 						CCarCtrl::JoinCarWithRoadSystem(veh);
-						ped->SetEnterCar(veh, 0);
+						ped->SetEnterCar(veh, 0);						
+						
+						
+
 						//CCarEnterExit::SetPedInCarDirect(ped, veh, 0, true);
 					}
 					else
@@ -136,7 +123,7 @@ void CPopulationManager::Update()
 					CWorld::FindObjectsInRange(spawnPos, 10.0, false, &out, 1, entities, false, false, true, false, false);
 					if (out > 0)continue;
 					//printf("%d: %.2f %.2f %.2f \n", i, spawnPos.x, spawnPos.y, spawnPos.z);
-					int modelID = pedModelIds[rand() % 249];
+					int modelID = 7;
 					printf("spawned ped with model %d pool: %d/%d\n", modelID, CPools::ms_pPedPool->GetNoOfUsedSpaces(), CPools::ms_pPedPool->GetNoOfFreeSpaces());
 					CPed* ped = gPedManager->Create(modelID, CVector(spawnPos.x, spawnPos.y, spawnPos.z + 0.6f), true);
 					if (!ped)return;
@@ -156,9 +143,10 @@ void CPopulationManager::Update()
 				printf("Delete one ped\n");
 
 				CWorld::Remove(ped);
-				operator_delete<CPed>(ped);
-				ped = nullptr;
-				i = this->peds.erase(i);
+
+				//CTheScripts::RemoveThisPed(CPed*)
+				plugin::Call<0x45EC70, CPed*>(ped);
+				
 			}
 			else
 			{
@@ -204,21 +192,19 @@ CVector CPopulationManager::GetPedCreationCoords(CVector pos, bool vehicle)
 	out.x += xAddition;
 	out.y += yAddition;
 
-	CNodeAddress pathLink;
-	//CNodeAddress * FindNodeClosestToCoors(CPathFind *g_pathfind, CNodeAddress *pathLink, float X, float Y, float Z, int nodeType, float maxDistance, __int16 unk2, int unk3, __int16 unk4, __int16 bBoatsOnly, int unk6)
-	//	if (!vehicle)path = plugin::CallMethodAndReturn<CNodeAddress*, 0x437150, CPathFind*, CNodeAddress*, CVector, int, float, INT16, int, INT16, INT16, int>(&ThePaths, &pathLink, out, 1, 999999.0, 1, 0, 0, 0, 0);
-	//	else path = plugin::CallMethodAndReturn<CNodeAddress*, 0x437150, CPathFind*, CNodeAddress*, CVector, int, float, INT16, int, INT16, INT16, int>(&ThePaths, &pathLink, out, 0, 999999.0, 1, 0, 0, 0, 0);
+	CNodeAddress * node = nullptr;
+	int path;
+	bool res = false;
 
+	if (!vehicle) {
+		path = ThePaths.FindNodeClosestToCoors({ pos.x + xAddition, pos.y + yAddition, pos.z }, 0, 10000.0f, 1, 0, 0, 0);
+	}
+	else {
+		path = ThePaths.FindNodeClosestToCoors({ pos.x + xAddition, pos.y + yAddition, pos.z }, 1, 10000.0f, 1, 0, 0, 0);
+	}
 
-
-	int path = ThePaths.FindNodeClosestToCoors({ pos.x + xAddition, pos.y + yAddition, pos.z }, 1, 10000.0f, 1, 0, 0, 0);
 	CPathNode node = ThePaths.nodes[path];
-		//return &ThePaths->m_pPathNodes[nodeInfo.m_wAreaId][*&nodeInfo >> 16];
-
-
-	return { (float)node.m_wPosX, (float)node.m_wPosY, (float)node.m_wPosZ };
-
+	CVector spawnPos = { (float)ThePaths.nodes[path].m_wPosX*0.125f, (float)ThePaths.nodes[path].m_wPosY*0.125f, CWorld::FindGroundZFor3DCoord((float)ThePaths.nodes[path].m_wPosX*0.125f, (float)ThePaths.nodes[path].m_wPosY*0.125f, (float)ThePaths.nodes[path].m_wPosZ*0.125f, &res) + 1.0f };
+	return spawnPos;
 }
-/*
 
-*/

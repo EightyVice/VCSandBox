@@ -4,7 +4,7 @@ CVehicleManager			*gVehicleManager = NULL;
 CPedManager				*gPedManager = NULL;
 CPlayerPedManager		*gPlayerPedManager = NULL;
 CPopulationManager		*gPopulationManager = NULL;
-
+CWeaponManager			*gWeaponManager = NULL;
 
 class VCSandBox {
 public:
@@ -20,6 +20,6 @@ public:
 		gVehicleManager = new CVehicleManager();
 		gPedManager = new CPedManager();
 		gPopulationManager = new CPopulationManager();
-        
+		gWeaponManager = new CWeaponManager();
     }
 } vCSandBox;

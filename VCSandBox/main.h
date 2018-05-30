@@ -30,6 +30,8 @@ using namespace Hook;
 #include "CPathFind.h"
 #include "CCarCtrl.h"
 #include "CTimer.h"
+#include "CTheScripts.h"
+
 
 //sandbox
 #include "CEntityManager.h"
