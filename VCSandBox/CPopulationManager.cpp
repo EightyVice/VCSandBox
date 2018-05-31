@@ -182,29 +182,24 @@ void CPopulationManager::Update()
 	}
 }
 
-CVector CPopulationManager::GetPedCreationCoords(CVector pos, bool vehicle)
+enum ePathType
+{
+	PATH_CAR = 0,
+	PATH_PED = 1,
+};
+
+CVector GetPathNodeCoors(const CPathNode *pNode)
+{
+	return CVector(static_cast<float>(pNode->m_wPosX)*0.125f, static_cast<float>(pNode->m_wPosY)*0.125f, static_cast<float>(pNode->m_wPosZ)*0.125f);
+}
+
+CVector CPopulationManager::GetPedCreationCoords(CVector vPos, bool bVehicle)
 {
 	int xAddition = Random(0, STREAM_DISTANCE) - STREAM_DISTANCE / 2;
 	int yAddition = Random(0, STREAM_DISTANCE) - STREAM_DISTANCE / 2;
 
-	CVector out;
-	out = pos;
-	out.x += xAddition;
-	out.y += yAddition;
-
-	CNodeAddress * node = nullptr;
-	int path;
-	bool res = false;
-
-	if (!vehicle) {
-		path = ThePaths.FindNodeClosestToCoors({ pos.x + xAddition, pos.y + yAddition, pos.z }, 0, 10000.0f, 1, 0, 0, 0);
-	}
-	else {
-		path = ThePaths.FindNodeClosestToCoors({ pos.x + xAddition, pos.y + yAddition, pos.z }, 1, 10000.0f, 1, 0, 0, 0);
-	}
-
-	CPathNode node = ThePaths.nodes[path];
-	CVector spawnPos = { (float)ThePaths.nodes[path].m_wPosX*0.125f, (float)ThePaths.nodes[path].m_wPosY*0.125f, CWorld::FindGroundZFor3DCoord((float)ThePaths.nodes[path].m_wPosX*0.125f, (float)ThePaths.nodes[path].m_wPosY*0.125f, (float)ThePaths.nodes[path].m_wPosZ*0.125f, &res) + 1.0f };
-	return spawnPos;
+	int iPath = ThePaths.FindNodeClosestToCoors(CVector(vPos.x + xAddition, vPos.y + yAddition, vPos.z), bVehicle ? PATH_CAR : PATH_PED, 9999.0f, 1, 0, 0, 0);
+	const CPathNode sNode = ThePaths.nodes[iPath];
+	return GetPathNodeCoors(&sNode);
 }
 
