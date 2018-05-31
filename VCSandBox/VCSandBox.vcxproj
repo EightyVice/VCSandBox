@@ -156,6 +156,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CCustomConsole.h" />
     <ClInclude Include="CEntityManager.h" />
     <ClInclude Include="CGamePatches.h" />
     <ClInclude Include="CModelManager.h" />
@@ -171,6 +172,7 @@
     <ClInclude Include="vendor\detours\detours.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CCustomConsole.cpp" />
     <ClCompile Include="CEntityManager.cpp" />
     <ClCompile Include="CGamePatches.cpp" />
     <ClCompile Include="CModelManager.cpp" />

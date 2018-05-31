@@ -130,3 +130,21 @@ typedef struct _CAMERA_AIM
 	CVector LookUp;
 
 } CAMERA_AIM;
+
+// Old sources
+#define CHECK_BIT(var,pos) ((var) & (1<<(pos)))
+#define SET_BIT(var,pos) ((var) |= (1<<(pos)))
+#define CLEAR_BIT(var,pos) ((var) &= ~(1<<(pos)))
+
+#define SAFE_RELEASE(p) { if ( (p) ) { (p)->Release(); (p) = 0; } }
+#define SAFE_DELETE(a) if( (a) != NULL ) delete (a); (a) = NULL;
+#define SAFE_FREE(a) if( (a) != NULL ) free (a); (a) = NULL;
+#define ARRAY_SIZE(a) (sizeof((a))/sizeof(*(a)))
+
+#define INTEGER_AT(addr) *(int *)(addr)
+#define FLOAT_AT(addr) *(float *)(addr)
+
+#define RAD2DEG 57.2957763671875
+#define SCREEN_WIDTH_(a) (((float)RsGlobal.maximumWidth / 640.0f)*a)
+#define SCREEN_HEIGHT_(a) (((float)RsGlobal.maximumHeight / 448.0f)*a)
+#define SCREEN(a) (((float)RsGlobal.maximumHeight / 900.0f)*a)

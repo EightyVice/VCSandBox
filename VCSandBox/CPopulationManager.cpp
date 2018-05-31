@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "CCustomConsole.h"
 
 #define MAX_PEDS_IN_STREAM_ZONE			70
 #define MAX_VEHICLES_IN_STREAM_ZONE		15
@@ -26,14 +27,22 @@ int startTime = 0;
 int spawned = 0;
 CPed* testPed = nullptr;
 
+template <typename ...Args>
+void cprintf(const std::string& format, Args && ...args)
+{
+	auto size = std::snprintf(nullptr, 0, format.c_str(), std::forward<Args>(args)...);
+	std::string output(size + 1, '\0');
+	std::sprintf(&output[0], format.c_str(), std::forward<Args>(args)...);
+
+	CCustomConsole::RegisterOneLine(output);
+}
+
 CPopulationManager::CPopulationManager()
 {
+	Events::gameProcessEvent += []
 	{
-		Events::gameProcessEvent += []
-		{
-			gPopulationManager->Update();
-		};
-	}
+		gPopulationManager->Update();
+	};
 }
 
 
@@ -84,7 +93,7 @@ void CPopulationManager::Update()
 
 					int modelID = 7;
 
-					printf("spawned ped with model %d pool: %d/%d\n", modelID, CPools::ms_pPedPool->GetNoOfUsedSpaces(), CPools::ms_pPedPool->GetNoOfFreeSpaces());
+					cprintf("spawned ped with model %d pool: %d/%d\n", modelID, CPools::ms_pPedPool->GetNoOfUsedSpaces(), CPools::ms_pPedPool->GetNoOfFreeSpaces());
 
 					CPed* ped = gPedManager->Create(modelID, CVector(spawnPos.x, spawnPos.y, spawnPos.z + 0.6f), true);
 					if (!ped)return;
@@ -92,7 +101,7 @@ void CPopulationManager::Update()
 					if (out == 0)
 					{
 						int vehModel = 232;
-						printf("vehmodel: %d\n", vehModel);
+						cprintf("vehmodel: %d\n", vehModel);
 						CVehicle* veh = gVehicleManager->Create(vehModel, CVector(spawnPos.x, spawnPos.y, spawnPos.z + 1.0f));
 
 						this->vehicles.push_back(veh);
@@ -131,7 +140,7 @@ void CPopulationManager::Update()
 					if (out > 0)continue;
 					//printf("%d: %.2f %.2f %.2f \n", i, spawnPos.x, spawnPos.y, spawnPos.z);
 					int modelID = 7;
-					printf("spawned ped with model %d pool: %d/%d\n", modelID, CPools::ms_pPedPool->GetNoOfUsedSpaces(), CPools::ms_pPedPool->GetNoOfFreeSpaces());
+					cprintf("spawned ped with model %d pool: %d/%d\n", modelID, CPools::ms_pPedPool->GetNoOfUsedSpaces(), CPools::ms_pPedPool->GetNoOfFreeSpaces());
 					CPed* ped = gPedManager->Create(modelID, CVector(spawnPos.x, spawnPos.y, spawnPos.z + 0.6f), true);
 					if (!ped)return;
 					peds.push_back(ped);
@@ -147,7 +156,7 @@ void CPopulationManager::Update()
 			CVector pedPos = pPed->GetPosition();
 			if (DistanceBetweenPoints(position, pedPos) > STREAM_DISTANCE)
 			{
-				printf("Delete one ped\n");
+				cprintf("Delete one ped\n");
 
 				plugin::Call<0x45EB10, CPed*>(pPed);    // CTheScripts::CleanUpThisPed
 				i = this->peds.erase(i);
@@ -165,7 +174,7 @@ void CPopulationManager::Update()
 			CVector pVehPos = pVeh->GetPosition();
 			if (DistanceBetweenPoints(position, pVehPos) > STREAM_DISTANCE)
 			{
-				printf("Delete one veh\n");
+				cprintf("Delete one veh\n");
 				if (pVeh->m_pDriver)
 				{
 					CPed * pPed = pVeh->m_pDriver;
