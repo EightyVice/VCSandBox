@@ -42,7 +42,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='GTAVC Release|Win32'">
-    <OutDir>..\..\..\..\Games\GTA VC</OutDir>
+    <OutDir>$(GTA_VC)\</OutDir>
     <TargetName>VCSandBox</TargetName>
     <TargetExt>.asi</TargetExt>
     <IncludePath>$(ProjectDir);$(IncludePath);$(DIRECTX9_SDK_DIR)\Include\;$(RWD3D9_DIR)\</IncludePath>
@@ -74,7 +74,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>No</GenerateDebugInformation>
       <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
-      <AdditionalLibraryDirectories>E:\xepo\dxsdkjun10\Lib\x86;$(ProjectDir)\vendor\detours.lib;$(PLUGIN_SDK_DIR)\output\lib\;$(RWD3D9_DIR)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(DIRECTX9_SDK_DIR)\;$(ProjectDir)\vendor\detours.lib;$(PLUGIN_SDK_DIR)\output\lib\;$(RWD3D9_DIR)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>plugin_vc.lib;d3d9.lib;d3dx9.lib;detours.lib;rwd3d9.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>

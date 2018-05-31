@@ -52,7 +52,7 @@ void CPopulationManager::Update()
 	{
 		if (!canManagePopulation)
 		{
-			if (CTimer::m_snTimeInMilliseconds - startTime > 5000)
+			if (CTimer::m_snTimeInMilliseconds - startTime > 1000)
 			{
 				canManagePopulation = true;
 			}
@@ -97,10 +97,18 @@ void CPopulationManager::Update()
 
 						this->vehicles.push_back(veh);
 						vehiclesNeeded--;
-						veh->SetDriver(ped);
-						ped->m_pVehicle = veh;
+						//veh->SetDriver(ped);
+						//ped->m_pVehicle = veh;
+						veh->m_nCreatedBy = eVehicleCreatedBy::RANDOM_VEHICLE;
+						((CAutomobile*)(veh))->PlaceOnRoadProperly();
 						CCarCtrl::JoinCarWithRoadSystem(veh);
-						ped->SetEnterCar(veh, 0);						
+						//ped->SetEnterCar(veh, 0);	
+
+						// opcode 0x36A
+						ped->SetObjective(OBJECTIVE_ENTER_CAR_AS_DRIVER);
+						//ped->SetObjectiveTimer(10000);
+						ped->WarpPedIntoCar(veh);
+						//veh->SetUpDriver();
 						
 						
 
