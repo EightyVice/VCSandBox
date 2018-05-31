@@ -1,4 +1,5 @@
-#include "main.h"
+#include "pch.h"
+
 CModelManager			*gModelManager = NULL;
 CVehicleManager			*gVehicleManager = NULL;
 CPedManager				*gPedManager = NULL;

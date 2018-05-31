@@ -1,4 +1,5 @@
-#include "main.h"
+#include "pch.h"
+
 CWeaponManager::CWeaponManager() {};
 
 void CWeaponManager::GiveWeapon(CPed* ped, eWeaponType weapon, unsigned int ammo, bool armed)
