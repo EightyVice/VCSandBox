@@ -1,6 +1,5 @@
 #include "main.h"
 
-
 #define MAX_PEDS_IN_STREAM_ZONE			70
 #define MAX_VEHICLES_IN_STREAM_ZONE		15
 #define STREAM_DISTANCE					150
@@ -136,16 +135,14 @@ void CPopulationManager::Update()
 
 		for (auto i = this->peds.begin(); i != this->peds.end();)
 		{
-			CPed * ped = *i;
-			CVector pedPos = ped->GetPosition();
+			CPed * pPed = *i;
+			CVector pedPos = pPed->GetPosition();
 			if (DistanceBetweenPoints(position, pedPos) > STREAM_DISTANCE)
 			{
 				printf("Delete one ped\n");
 
-				CWorld::Remove(ped);
-
-				//CTheScripts::RemoveThisPed(CPed*)
-				plugin::Call<0x45EC70, CPed*>(ped);
+				plugin::Call<0x45EB10, CPed*>(pPed);    // CTheScripts::CleanUpThisPed
+				i = this->peds.erase(i);
 				
 			}
 			else
@@ -153,24 +150,21 @@ void CPopulationManager::Update()
 				++i;
 			}
 		}
+
 		for (auto i = this->vehicles.begin(); i != this->vehicles.end();)
 		{
-			CVehicle * veh = *i;
-			CVector pedPos = veh->GetPosition();
-			if (DistanceBetweenPoints(position, pedPos) > STREAM_DISTANCE)
+			CVehicle * pVeh = *i;
+			CVector pVehPos = pVeh->GetPosition();
+			if (DistanceBetweenPoints(position, pVehPos) > STREAM_DISTANCE)
 			{
 				printf("Delete one veh\n");
-				if (veh->m_pDriver)
+				if (pVeh->m_pDriver)
 				{
-					CPed * ped = veh->m_pDriver;
-					this->peds.remove(ped);
-					CWorld::Remove(ped);
-					operator_delete<CPed>(ped);
-					ped = nullptr;
+					CPed * pPed = pVeh->m_pDriver;
+					plugin::Call<0x45EB10, CPed*>(pPed);    // CTheScripts::CleanUpThisPed
+					this->peds.remove(pPed);
 				}
-				CWorld::Remove(veh);
-				operator_delete<CVehicle>(veh);
-				veh = nullptr;
+				plugin::Call<0x45EAD0, CVehicle*>(pVeh);    // CTheScripts::CleanUpThisVehicle
 				i = this->vehicles.erase(i);
 			}
 			else

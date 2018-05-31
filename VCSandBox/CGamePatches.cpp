@@ -1,6 +1,7 @@
 #include "main.h"
 #include "CGamePatches.h"
 #include "CWeather.h"
+#include "CPad.h"
 
 CGamePatches::CGamePatches()
 {
@@ -13,6 +14,17 @@ CGamePatches::CGamePatches()
 	this->CrashfixHooks();
 
 	this->LimitPatches();
+
+	Events::gameProcessEvent += []
+	{
+		static bool bPressed = false;
+		if (KeyPressed(VK_ESCAPE) && bPressed == false)
+		{
+			bPressed = true;
+			plugin::Call<0x602EE0, int, void*>(30, nullptr);	// RsEventHandler
+		}
+	};
+
 	printf("[CGAMEPATCHES] Main Patches Done");
 }
 
