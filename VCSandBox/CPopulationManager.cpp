@@ -93,7 +93,7 @@ void CPopulationManager::Update()
 
 					int modelID = 7;
 
-					cprintf("spawned ped with model %d pool: %d/%d\n", modelID, CPools::ms_pPedPool->GetNoOfUsedSpaces(), CPools::ms_pPedPool->GetNoOfFreeSpaces());
+					cprintf("spawned ped with model %d pool: %d/%d", modelID, CPools::ms_pPedPool->GetNoOfUsedSpaces(), CPools::ms_pPedPool->GetNoOfFreeSpaces());
 
 					CPed* ped = gPedManager->Create(modelID, CVector(spawnPos.x, spawnPos.y, spawnPos.z + 0.6f), true);
 					if (!ped)return;
@@ -101,7 +101,7 @@ void CPopulationManager::Update()
 					if (out == 0)
 					{
 						int vehModel = 232;
-						cprintf("vehmodel: %d\n", vehModel);
+						cprintf("vehmodel: %d", vehModel);
 						CVehicle* veh = gVehicleManager->Create(vehModel, CVector(spawnPos.x, spawnPos.y, spawnPos.z + 1.0f));
 
 						this->vehicles.push_back(veh);
@@ -138,9 +138,9 @@ void CPopulationManager::Update()
 					short out;
 					CWorld::FindObjectsInRange(spawnPos, 10.0, false, &out, 1, entities, false, false, true, false, false);
 					if (out > 0)continue;
-					//printf("%d: %.2f %.2f %.2f \n", i, spawnPos.x, spawnPos.y, spawnPos.z);
+					//printf("%d: %.2f %.2f %.2f ", i, spawnPos.x, spawnPos.y, spawnPos.z);
 					int modelID = 7;
-					cprintf("spawned ped with model %d pool: %d/%d\n", modelID, CPools::ms_pPedPool->GetNoOfUsedSpaces(), CPools::ms_pPedPool->GetNoOfFreeSpaces());
+					cprintf("spawned ped with model %d pool: %d/%d", modelID, CPools::ms_pPedPool->GetNoOfUsedSpaces(), CPools::ms_pPedPool->GetNoOfFreeSpaces());
 					CPed* ped = gPedManager->Create(modelID, CVector(spawnPos.x, spawnPos.y, spawnPos.z + 0.6f), true);
 					if (!ped)return;
 					peds.push_back(ped);
@@ -156,7 +156,7 @@ void CPopulationManager::Update()
 			CVector pedPos = pPed->GetPosition();
 			if (DistanceBetweenPoints(position, pedPos) > STREAM_DISTANCE)
 			{
-				cprintf("Delete one ped\n");
+				cprintf("Delete one ped");
 
 				plugin::Call<0x45EB10, CPed*>(pPed);    // CTheScripts::CleanUpThisPed
 				i = this->peds.erase(i);
@@ -174,7 +174,7 @@ void CPopulationManager::Update()
 			CVector pVehPos = pVeh->GetPosition();
 			if (DistanceBetweenPoints(position, pVehPos) > STREAM_DISTANCE)
 			{
-				cprintf("Delete one veh\n");
+				cprintf("Delete one veh");
 				if (pVeh->m_pDriver)
 				{
 					CPed * pPed = pVeh->m_pDriver;
@@ -189,7 +189,7 @@ void CPopulationManager::Update()
 				++i;
 			}
 		}
-		//printf("Peds: %d  needed: %d\n", pedsSpawned, pedsNeeded);
+		//printf("Peds: %d  needed: %d", pedsSpawned, pedsNeeded);
 	}
 }
 
