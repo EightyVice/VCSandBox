@@ -92,10 +92,10 @@ void Hook_CRunningScript__Process()
 
 
 
-		//CWorld::Players[0].m_bNeverGetsTired = true;
+		CWorld::Players[0].m_bNeverGetsTired = true;
 
 
-		CPlayerPed::ReactivatePlayerPed(0);
+		//CPlayerPed::ReactivatePlayerPed(0);
 
 
 		CStreaming::RequestModel(269, 1);
