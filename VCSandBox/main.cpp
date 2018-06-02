@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "CCustomConsole.h"
+#include "CLogger.h"
 
 CModelManager			*gModelManager = NULL;
 CVehicleManager			*gVehicleManager = NULL;
@@ -7,6 +8,11 @@ CPedManager				*gPedManager = NULL;
 CPlayerPedManager		*gPlayerPedManager = NULL;
 CPopulationManager		*gPopulationManager = NULL;
 CWeaponManager			*gWeaponManager = NULL;
+
+// fowrward declaration
+int InstallExceptionCatcher(void(*OnException)(const char* log));
+
+CLogger* gLogger = nullptr;
 
 void DoPatches()
 {
@@ -24,6 +30,13 @@ void DoPatches()
 	{
 		CCustomConsole::Render();
 	};
+
+	// Install exception filter to log crashes
+	InstallExceptionCatcher([](const char* buffer)
+	{
+		gLogger->log(buffer);
+	});
+
 }
 
 BOOL APIENTRY DllMain(HMODULE hModule, DWORD dwReason, LPVOID lpReserved)
@@ -31,9 +44,15 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD dwReason, LPVOID lpReserved)
 	switch (dwReason)
 	{
 	case DLL_PROCESS_ATTACH:
+		gLogger = new CLogger("VCSandBox.log");
 		DoPatches();
 		break;
 	case DLL_PROCESS_DETACH:
+		if (gLogger)
+		{
+			delete gLogger;
+			gLogger = nullptr;
+		}
 		break;
 	}
 	return TRUE;

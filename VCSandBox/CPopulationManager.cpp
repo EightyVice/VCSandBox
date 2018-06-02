@@ -77,6 +77,8 @@ void CPopulationManager::Update()
 		int pedsNeeded = MAX_PEDS_IN_STREAM_ZONE - pedsSpawned;
 		int vehiclesNeeded = MAX_VEHICLES_IN_STREAM_ZONE - vehiclesSpawned;
 
+		CPathNode* pNode = nullptr;
+
 		if (pedsNeeded > 0)
 		{
 			for (int i = 0; i < pedsNeeded; i++)
@@ -116,16 +118,19 @@ void CPopulationManager::Update()
 						// opcode 0x36A
 						ped->SetObjective(OBJECTIVE_ENTER_CAR_AS_DRIVER);
 						//ped->SetObjectiveTimer(10000);
-						ped->WarpPedIntoCar(veh);
+						//ped->WarpPedIntoCar(veh);
+						veh->SetDriver(ped);
 						//veh->SetUpDriver();
+
+						//veh->m_autopilot.m_currentAddress
 						
-						
+						CCarCtrl::PickNextNodeRandomly(veh);
 
 						//CCarEnterExit::SetPedInCarDirect(ped, veh, 0, true);
 					}
 					else
 					{
-						spawnPos = this->GetPedCreationCoords(spawnPos);
+						spawnPos = this->GetPedCreationCoords(spawnPos, false);
 						ped->Teleport(spawnPos);
 					}
 
@@ -133,7 +138,7 @@ void CPopulationManager::Update()
 				}
 				else
 				{
-					CVector spawnPos = this->GetPedCreationCoords(position);
+					CVector spawnPos = this->GetPedCreationCoords(position, false);
 					CEntity ** entities = nullptr;
 					short out;
 					CWorld::FindObjectsInRange(spawnPos, 10.0, false, &out, 1, entities, false, false, true, false, false);
@@ -210,7 +215,7 @@ CVector CPopulationManager::GetPedCreationCoords(CVector vPos, bool bVehicle)
 	int yAddition = Random(0, STREAM_DISTANCE) - STREAM_DISTANCE / 2;
 
 	int iPath = ThePaths.FindNodeClosestToCoors(CVector(vPos.x + xAddition, vPos.y + yAddition, vPos.z), bVehicle ? PATH_CAR : PATH_PED, 9999.0f, 1, 0, 0, 0);
-	const CPathNode sNode = ThePaths.nodes[iPath];
-	return GetPathNodeCoors(&sNode);
+	//*pNode = ThePaths.nodes[iPath];
+	return GetPathNodeCoors(&ThePaths.nodes[iPath]);
 }
 

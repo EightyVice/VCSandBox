@@ -1,4 +1,5 @@
 #pragma once
+
 class CPopulationManager
 {
 public:
@@ -6,7 +7,7 @@ public:
 	
 
 	void Update();
-	CVector GetPedCreationCoords(CVector pos, bool vehicle = false);
+	CVector GetPedCreationCoords(CVector pos, bool vehicle);
 
 	std::list<CPed*> peds;
 	std::list<CVehicle*> vehicles;

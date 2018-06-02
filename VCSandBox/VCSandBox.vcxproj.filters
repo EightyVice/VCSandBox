@@ -26,6 +26,9 @@
     <Filter Include="Main">
       <UniqueIdentifier>{d0f3e5e4-4a2e-4d25-b8f4-26d39e375840}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Useful">
+      <UniqueIdentifier>{8b71e879-43f3-4edb-aaf0-47e083ae6891}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -70,6 +73,12 @@
     <ClInclude Include="CCustomConsole.h">
       <Filter>Logic</Filter>
     </ClInclude>
+    <ClInclude Include="CLogger.h">
+      <Filter>Useful</Filter>
+    </ClInclude>
+    <ClInclude Include="CStore.h">
+      <Filter>Useful</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -104,6 +113,9 @@
     </ClCompile>
     <ClCompile Include="CCustomConsole.cpp">
       <Filter>Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="Exception.cpp">
+      <Filter>Useful</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

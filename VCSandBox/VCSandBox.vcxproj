@@ -133,7 +133,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(RWD3D9_DIR)\;$(PLUGIN_SDK_DIR)\output\lib\;$(DIRECTX9_SDK_DIR)\lib\x86\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>plugin_vc.lib;d3d9.lib;d3dx9.lib;detours.lib;rwd3d9.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>plugin_vc.lib;d3d9.lib;d3dx9.lib;detours.lib;rwd3d9.lib;DbgHelp.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
     </Link>
   </ItemDefinitionGroup>
@@ -159,10 +159,12 @@
     <ClInclude Include="CCustomConsole.h" />
     <ClInclude Include="CEntityManager.h" />
     <ClInclude Include="CGamePatches.h" />
+    <ClInclude Include="CLogger.h" />
     <ClInclude Include="CModelManager.h" />
     <ClInclude Include="CPedManager.h" />
     <ClInclude Include="CPlayerPedManager.h" />
     <ClInclude Include="CPopulationManager.h" />
+    <ClInclude Include="CStore.h" />
     <ClInclude Include="CVehicleManager.h" />
     <ClInclude Include="CWeaponManager.h" />
     <ClInclude Include="hooklibrary.h" />
@@ -181,6 +183,7 @@
     <ClCompile Include="CPopulationManager.cpp" />
     <ClCompile Include="CVehicleManager.cpp" />
     <ClCompile Include="CWeaponManager.cpp" />
+    <ClCompile Include="Exception.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

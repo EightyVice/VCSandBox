@@ -32,7 +32,7 @@ CVehicle *CVehicleManager::Create(int modelid, const CVector& position)
 			vehicle->m_placement.pos = position;
 			vehicle->m_placement.SetOrientation(0.0f, 0.0f, 0.0f);
 			vehicle->m_nLockStatus = CARLOCK_UNLOCKED;
-			vehicle->m_nState = 4;
+			//vehicle->m_nState = 4;
 			CWorld::Add(vehicle);
 			return vehicle;
 		}
