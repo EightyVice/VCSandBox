@@ -73,10 +73,13 @@ void Hook_CRunningScript__Process()
 		CPools::ms_pVehiclePool->Clear();
 
 
-		// Change player model ID
-		MemWrite<u8>(0x5384FA + 1, 1); //Not important if we set a new one after spawn
+		if (CStreaming::ms_aInfoForModel[0].m_nLoadState != 1)
+		{
+			//CStreaming::RequestSpecialModel(0, "player", 5);
+			plugin::Call<0x40AA60, int, const char*, int>(0, "player", 5);	// CStreaming::RequestSpecialModel
+			CStreaming::LoadAllRequestedModels(0);
+		}
 
-									   // Setup own ped on 0 game ID
 		CPlayerPed::SetupPlayerPed(0);
 
 
@@ -89,10 +92,10 @@ void Hook_CRunningScript__Process()
 
 
 
-		CWorld::Players[0].m_bNeverGetsTired = true;
+		//CWorld::Players[0].m_bNeverGetsTired = true;
 
 
-
+		CPlayerPed::ReactivatePlayerPed(0);
 
 
 		CStreaming::RequestModel(269, 1);
@@ -128,6 +131,13 @@ void Hook_CRunningScript__Process()
 
 		// First tick processed
 		scriptProcessed = true;
+
+		//auto ped = CWorld::Players[0].m_pPed;
+		//ped->Undress("army");
+		//CStreaming::LoadAllRequestedModels(0);
+		//ped->Dress();
+
+		//plugin::Call<0x4AE8C0, const char *>("army");
 	}
 }
 

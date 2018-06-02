@@ -108,25 +108,14 @@ void CPopulationManager::Update()
 
 						this->vehicles.push_back(veh);
 						vehiclesNeeded--;
-						//veh->SetDriver(ped);
-						//ped->m_pVehicle = veh;
-						veh->m_nCreatedBy = eVehicleCreatedBy::RANDOM_VEHICLE;
 						((CAutomobile*)(veh))->PlaceOnRoadProperly();
 						CCarCtrl::JoinCarWithRoadSystem(veh);
-						//ped->SetEnterCar(veh, 0);	
 
 						// opcode 0x36A
 						ped->SetObjective(OBJECTIVE_ENTER_CAR_AS_DRIVER);
-						//ped->SetObjectiveTimer(10000);
-						//ped->WarpPedIntoCar(veh);
-						veh->SetDriver(ped);
-						//veh->SetUpDriver();
 
-						//veh->m_autopilot.m_currentAddress
-						
-						CCarCtrl::PickNextNodeRandomly(veh);
-
-						//CCarEnterExit::SetPedInCarDirect(ped, veh, 0, true);
+						veh->SetUpDriver();
+						veh->m_nCreatedBy = eVehicleCreatedBy::PERMANENT_VEHICLE;
 					}
 					else
 					{
