@@ -28,4 +28,5 @@ public:
 	int SetBlipToVeh(CVehicle *veh);
 	int AddCustomBlip(CVector pos, unsigned int SpriteID);
 	void ChangeBlipPos(int blip,CVector pos);
+	int AddBlip(CVector pos, int scale, int sprite, int color);
 };

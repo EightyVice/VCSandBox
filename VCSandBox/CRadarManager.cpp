@@ -36,3 +36,10 @@ void CRadarManager::ChangeBlipPos(int BlipID, CVector pos) {
 	vecBlipPos_Y[BlipIndex] = pos.y;
 	vecBlipPos_Z[BlipIndex] = pos.z;
 }
+int CRadarManager::AddBlip(CVector pos, int scale, int sprite, int color) {
+	int CoordBlip = CallAndReturn<int, 0x4C3C80, unsigned int, CVector, unsigned int, unsigned int>(4, pos, 0, 3);
+	plugin::Call<0x4C3840, int, int>(CoordBlip, scale);
+	plugin::Call<0x4C3780, int, int>(CoordBlip, sprite);
+	plugin::Call<0x4C3930, int, unsigned int>(CoordBlip, color);
+}
+

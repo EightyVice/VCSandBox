@@ -42,13 +42,6 @@ CPopulationManager::CPopulationManager()
 	
 	Events::gameProcessEvent += []
 	{
-		if (KeyPressed(VK_TAB)) {
-			CPed*ped = gPedManager->Create(2, FindPlayerCoors(), 0);
-
-			int blip = gRadarManager->SetBlipToPed(ped);
-			ped->m_placement.pos.z += 50;
-			gRadarManager->ChangeBlipPos(blip, ped->m_placement.pos);
-		}
 
 		gPopulationManager->Update();
 
