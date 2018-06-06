@@ -164,6 +164,7 @@
     <ClInclude Include="CPedManager.h" />
     <ClInclude Include="CPlayerPedManager.h" />
     <ClInclude Include="CPopulationManager.h" />
+    <ClInclude Include="CRadarManager.h" />
     <ClInclude Include="CStore.h" />
     <ClInclude Include="CVehicleManager.h" />
     <ClInclude Include="CWeaponManager.h" />
@@ -181,6 +182,7 @@
     <ClCompile Include="CPedManager.cpp" />
     <ClCompile Include="CPlayerPedManager.cpp" />
     <ClCompile Include="CPopulationManager.cpp" />
+    <ClCompile Include="CRadarManager.cpp" />
     <ClCompile Include="CVehicleManager.cpp" />
     <ClCompile Include="CWeaponManager.cpp" />
     <ClCompile Include="Exception.cpp" />

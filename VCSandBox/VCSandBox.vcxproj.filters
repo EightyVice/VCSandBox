@@ -79,6 +79,9 @@
     <ClInclude Include="CStore.h">
       <Filter>Useful</Filter>
     </ClInclude>
+    <ClInclude Include="CRadarManager.h">
+      <Filter>Logic</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -116,6 +119,9 @@
     </ClCompile>
     <ClCompile Include="Exception.cpp">
       <Filter>Useful</Filter>
+    </ClCompile>
+    <ClCompile Include="CRadarManager.cpp">
+      <Filter>Logic</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

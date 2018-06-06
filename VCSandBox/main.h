@@ -31,7 +31,7 @@ using namespace Hook;
 #include "CCarCtrl.h"
 #include "CTimer.h"
 #include "CTheScripts.h"
-
+#include "CHud.h"
 
 //sandbox
 #include "CEntityManager.h"
@@ -42,7 +42,7 @@ using namespace Hook;
 #include "CPopulationManager.h"
 #include "CGamePatches.h"
 #include "CWeaponManager.h"
-
+#include "CRadarManager.h"
 
 //externals
 extern CModelManager		*gModelManager;
@@ -50,7 +50,7 @@ extern CVehicleManager		*gVehicleManager;
 extern CPedManager			*gPedManager;
 extern CPlayerPedManager	*gPlayerPedManager;
 extern CPopulationManager	*gPopulationManager;
-
+extern CRadarManager		*gRadarManager;
  
 // that enum is from SA maybe right
 

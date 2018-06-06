@@ -39,9 +39,19 @@ void cprintf(const std::string& format, Args && ...args)
 
 CPopulationManager::CPopulationManager()
 {
+	
 	Events::gameProcessEvent += []
 	{
+		if (KeyPressed(VK_TAB)) {
+			CPed*ped = gPedManager->Create(2, FindPlayerCoors(), 0);
+
+			int blip = gRadarManager->SetBlipToPed(ped);
+			ped->m_placement.pos.z += 50;
+			gRadarManager->ChangeBlipPos(blip, ped->m_placement.pos);
+		}
+
 		gPopulationManager->Update();
+
 	};
 }
 
@@ -98,6 +108,7 @@ void CPopulationManager::Update()
 					cprintf("spawned ped with model %d pool: %d/%d", modelID, CPools::ms_pPedPool->GetNoOfUsedSpaces(), CPools::ms_pPedPool->GetNoOfFreeSpaces());
 
 					CPed* ped = gPedManager->Create(modelID, CVector(spawnPos.x, spawnPos.y, spawnPos.z + 0.6f), true);
+					//gRadarManager->SetBlipToCoors(spawnPos);
 					if (!ped)return;
 
 					if (out == 0)
@@ -120,7 +131,7 @@ void CPopulationManager::Update()
 					else
 					{
 						spawnPos = this->GetPedCreationCoords(spawnPos, false);
-						ped->Teleport(spawnPos);
+						ped->m_placement.pos = spawnPos;
 					}
 
 					this->peds.push_back(ped);

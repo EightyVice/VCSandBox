@@ -8,6 +8,7 @@ CPedManager				*gPedManager = NULL;
 CPlayerPedManager		*gPlayerPedManager = NULL;
 CPopulationManager		*gPopulationManager = NULL;
 CWeaponManager			*gWeaponManager = NULL;
+CRadarManager			*gRadarManager = NULL;
 
 // fowrward declaration
 int InstallExceptionCatcher(void(*OnException)(const char* log));
@@ -25,6 +26,7 @@ void DoPatches()
 	gPedManager = new CPedManager();
 	gPopulationManager = new CPopulationManager();
 	gWeaponManager = new CWeaponManager();
+	gRadarManager = new CRadarManager();
 
 	plugin::Events::drawingEvent += []
 	{
