@@ -36,13 +36,12 @@ void cprintf(const std::string& format, Args && ...args)
 
 	CCustomConsole::RegisterOneLine(output);
 }
-
+int handle;
 CPopulationManager::CPopulationManager()
 {
 	
 	Events::gameProcessEvent += []
 	{
-
 		gPopulationManager->Update();
 
 	};

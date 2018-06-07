@@ -9,7 +9,7 @@ CPlayerPedManager		*gPlayerPedManager = NULL;
 CPopulationManager		*gPopulationManager = NULL;
 CWeaponManager			*gWeaponManager = NULL;
 CRadarManager			*gRadarManager = NULL;
-
+CPickupManager			*gPickupManager = NULL;
 // fowrward declaration
 int InstallExceptionCatcher(void(*OnException)(const char* log));
 

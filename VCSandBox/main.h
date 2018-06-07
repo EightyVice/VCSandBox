@@ -32,6 +32,8 @@ using namespace Hook;
 #include "CTimer.h"
 #include "CTheScripts.h"
 #include "CHud.h"
+#include "CPickups.h"
+#include "ePickupType.h"
 
 //sandbox
 #include "CEntityManager.h"
@@ -43,7 +45,7 @@ using namespace Hook;
 #include "CGamePatches.h"
 #include "CWeaponManager.h"
 #include "CRadarManager.h"
-
+#include "CPickupManager.h"
 //externals
 extern CModelManager		*gModelManager;
 extern CVehicleManager		*gVehicleManager;
@@ -51,7 +53,8 @@ extern CPedManager			*gPedManager;
 extern CPlayerPedManager	*gPlayerPedManager;
 extern CPopulationManager	*gPopulationManager;
 extern CRadarManager		*gRadarManager;
- 
+extern CPickupManager		*gPickupManager;
+
 // that enum is from SA maybe right
 
 enum PLUGIN_API eCamMode : unsigned short {

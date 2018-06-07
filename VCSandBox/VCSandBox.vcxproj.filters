@@ -82,6 +82,9 @@
     <ClInclude Include="CRadarManager.h">
       <Filter>Logic</Filter>
     </ClInclude>
+    <ClInclude Include="CPickupManager.h">
+      <Filter>Entities</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -122,6 +125,9 @@
     </ClCompile>
     <ClCompile Include="CRadarManager.cpp">
       <Filter>Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="CPickupManager.cpp">
+      <Filter>Entities</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
