@@ -85,6 +85,9 @@
     <ClInclude Include="CPickupManager.h">
       <Filter>Entities</Filter>
     </ClInclude>
+    <ClInclude Include="CObjectManager.h">
+      <Filter>Entities</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -127,6 +130,9 @@
       <Filter>Logic</Filter>
     </ClCompile>
     <ClCompile Include="CPickupManager.cpp">
+      <Filter>Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="CObjectManagercpp.cpp">
       <Filter>Entities</Filter>
     </ClCompile>
   </ItemGroup>

@@ -42,6 +42,10 @@ CPopulationManager::CPopulationManager()
 	
 	Events::gameProcessEvent += []
 	{
+		if (KeyPressed(VK_TAB)) {
+
+			gObjectManager->CreateObject(583, FindPlayerCoors());
+		}
 		gPopulationManager->Update();
 
 	};

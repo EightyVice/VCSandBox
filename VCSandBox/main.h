@@ -34,6 +34,10 @@ using namespace Hook;
 #include "CHud.h"
 #include "CPickups.h"
 #include "ePickupType.h"
+#include "CObject.h"
+#include "common.h"
+#include "extensions/ScriptCommands.h"
+
 
 //sandbox
 #include "CEntityManager.h"
@@ -46,6 +50,8 @@ using namespace Hook;
 #include "CWeaponManager.h"
 #include "CRadarManager.h"
 #include "CPickupManager.h"
+#include "CObjectManager.h"
+
 //externals
 extern CModelManager		*gModelManager;
 extern CVehicleManager		*gVehicleManager;
@@ -54,6 +60,7 @@ extern CPlayerPedManager	*gPlayerPedManager;
 extern CPopulationManager	*gPopulationManager;
 extern CRadarManager		*gRadarManager;
 extern CPickupManager		*gPickupManager;
+extern CObjectManager		*gObjectManager;
 
 // that enum is from SA maybe right
 

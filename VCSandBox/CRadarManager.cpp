@@ -1,7 +1,6 @@
 #include "pch.h"
 CRadarManager::CRadarManager() {};
 int CRadarManager::SetBlipToPed(CPed *ped) {
-
 	//Creates Blip : CRadar::SetCoorsBlip
 	int CoordBlip = CallAndReturn<int, 0x4C3C80, unsigned int, CVector, unsigned int, unsigned int>(4, ped->GetPosition(), 0, 3);
 	//Sets the Scale: CRadar::ChangeBlipScale

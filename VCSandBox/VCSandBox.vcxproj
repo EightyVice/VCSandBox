@@ -161,6 +161,7 @@
     <ClInclude Include="CGamePatches.h" />
     <ClInclude Include="CLogger.h" />
     <ClInclude Include="CModelManager.h" />
+    <ClInclude Include="CObjectManager.h" />
     <ClInclude Include="CPedManager.h" />
     <ClInclude Include="CPickupManager.h" />
     <ClInclude Include="CPlayerPedManager.h" />
@@ -180,6 +181,7 @@
     <ClCompile Include="CEntityManager.cpp" />
     <ClCompile Include="CGamePatches.cpp" />
     <ClCompile Include="CModelManager.cpp" />
+    <ClCompile Include="CObjectManagercpp.cpp" />
     <ClCompile Include="CPedManager.cpp" />
     <ClCompile Include="CPickupManager.cpp" />
     <ClCompile Include="CPlayerPedManager.cpp" />
