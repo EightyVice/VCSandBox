@@ -1,3 +1,13 @@
+/*
+    Ingame-Console 
+    ----------------
+    FILE: CCustomConsole.cpp
+    DESCRIPTION: Implements Ingame-Console
+    AUTHOR(S): Statham
+
+    License: GPL v3
+    Copyrights (c) 2017-2017 Statham
+*/
 #include "pch.h"
 #include "CCustomConsole.h"
 #include "CWorld.h"

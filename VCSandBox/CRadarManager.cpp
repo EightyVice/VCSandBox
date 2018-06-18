@@ -1,3 +1,13 @@
+/*
+    Grand Theft CO-OP: Vice City
+    -----------------------------
+    FILE: CRadarManager.cpp
+    DESCRIPTION: Manages the radar blips in game.
+    AUTHOR(S): Zurix
+
+    License: GPL v3
+    Copyrights (c) 2017-2017 GTC Team
+*/
 #include "pch.h"
 CRadarManager::CRadarManager() {};
 int CRadarManager::SetBlipToPed(CPed *ped) {

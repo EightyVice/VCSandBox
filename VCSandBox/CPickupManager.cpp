@@ -1,3 +1,13 @@
+/*
+    Grand Theft CO-OP: Vice City
+    -----------------------------
+    FILE: CPickupManager
+    DESCRIPTION: Manages the pickups in game.
+    AUTHOR(S): Zurix
+
+    License: GPL v3
+    Copyrights (c) 2017-2017 GTC Team
+*/
 #include "pch.h"
 
 int CPickupManager::AddPickup(CVector pos, ePickupType type, unsigned int model) {

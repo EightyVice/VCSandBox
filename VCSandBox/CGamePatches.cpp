@@ -1,3 +1,14 @@
+/*
+    Grand Theft CO-OP: Vice City
+    -----------------------------
+    FILE: CGamePatches.cpp
+    DESCRIPTION: Patches the game with important patches.
+    AUTHOR(S): Vektor
+               Zurix
+
+    License: GPL v3
+    Copyrights (c) 2017-2017 GTC Team
+*/
 #include "pch.h"
 #include "CGamePatches.h"
 #include "CWeather.h"
@@ -217,12 +228,31 @@ void CGamePatches::PopulationPatches()
 
 void CGamePatches::LimitPatches()
 {
-	/*
-
-
-	*/
 	//Pedpool inc
 	MemWrite<s32>(0x4C02C8, 1000);
 	//vehicle pool inc
 	MemCpy((void*)0x4C02E4, "\x6A\x00\x68\x3E\x80\x00\x00", 7);//its 1000 i tested it
+                                                               //EntryInfoNode limit patch
+    MemWrite<BYTE>(0x4C02A6, 0x75);
+    MemWrite<BYTE>(0x4C02A7, 0x30);
+
+    //EntryInfoNode limit patch
+    MemWrite<BYTE>(0x4C0284, 0xEA);
+    MemWrite<BYTE>(0x4C0285, 0x60);
+
+    //Object limit patch
+    MemWrite<BYTE>(0x4C0284, 0x13);
+    MemWrite<BYTE>(0x4C0285, 0x88);
+
+    //Dummys limit patch
+    MemWrite<BYTE>(0x4C036C, 0x4E);
+    MemWrite<BYTE>(0x4C036D, 0x20);
+
+    //Buildings limit patch
+    MemWrite<BYTE>(0x4C0309, 0x4E);
+    MemWrite<BYTE>(0x4C030A, 0x20);
+
+    // flhreference patch
+    MemWrite<BYTE>(0x628E00, 5);
+
 }

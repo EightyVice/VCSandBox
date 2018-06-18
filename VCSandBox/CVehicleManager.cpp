@@ -1,4 +1,14 @@
-﻿#include "pch.h"
+﻿/*
+    Grand Theft CO-OP: Vice City
+    -----------------------------
+    FILE: CVehicleManager.cpp
+    DESCRIPTION: Manages the vehicle entities in game.
+    AUTHOR(S): Vektor
+
+    License: GPL v3
+    Copyrights (c) 2017-2017 GTC Team
+*/
+#include "pch.h"
 
 CVehicleManager::CVehicleManager() {}
 
@@ -18,11 +28,10 @@ CVehicle *CVehicleManager::Create(int modelid, const CVector& position)
 			break;
 		case VEHICLE_BIKE:
 			vehicle = new CBike(modelid, 1);
-			//reinterpret_cast<CBike *>(vehicle)->VehicleDamage.m_nFlags |= 0x10;
 			break;
 		case VEHICLE_BOAT:
 			vehicle = new CBoat(modelid, 1);
-			break;
+		 break;
 		default:
 			vehicle = new CAutomobile(modelid, 1);
 			break;

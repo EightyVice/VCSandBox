@@ -132,7 +132,7 @@
     <ClCompile Include="CPickupManager.cpp">
       <Filter>Entities</Filter>
     </ClCompile>
-    <ClCompile Include="CObjectManagercpp.cpp">
+    <ClCompile Include="CObjectManager.cpp">
       <Filter>Entities</Filter>
     </ClCompile>
   </ItemGroup>

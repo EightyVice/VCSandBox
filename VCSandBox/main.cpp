@@ -1,4 +1,14 @@
-#include "pch.h"
+/*
+    Grand Theft CO-OP: Vice City
+    -----------------------------
+    FILE: CObjectManager.cpp
+    DESCRIPTION: Main Entry for the ASI
+    AUTHOR(S): Vektor
+               Statham
+
+    License: GPL v3
+    Copyrights (c) 2017-2017 GTC Team
+*/#include "pch.h"
 #include "CCustomConsole.h"
 #include "CLogger.h"
 
@@ -26,7 +36,7 @@ void DoPatches()
 	gModelManager = new CModelManager();
 	gVehicleManager = new CVehicleManager();
 	gPedManager = new CPedManager();
-	gPopulationManager = new CPopulationManager();
+    gPopulationManager = new CPopulationManager();
 	gWeaponManager = new CWeaponManager();
 	gRadarManager = new CRadarManager();
 
