@@ -1,3 +1,13 @@
+/*
+    Grand Theft CO-OP: Vice City
+    -----------------------------
+    FILE: CPopulationManager.cpp
+    DESCRIPTION: Emulates Population and traffic in game.
+    AUTHOR(S): Vektor
+
+    License: GPL v3
+    Copyrights (c) 2017-2017 GTC Team
+*/
 #include "pch.h"
 #include "CCustomConsole.h"
 

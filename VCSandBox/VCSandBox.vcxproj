@@ -160,6 +160,7 @@
     <ClInclude Include="CEntityManager.h" />
     <ClInclude Include="CGamePatches.h" />
     <ClInclude Include="CLogger.h" />
+    <ClInclude Include="CMissionManager.h" />
     <ClInclude Include="CModelManager.h" />
     <ClInclude Include="CObjectManager.h" />
     <ClInclude Include="CPedManager.h" />
@@ -180,6 +181,7 @@
     <ClCompile Include="CCustomConsole.cpp" />
     <ClCompile Include="CEntityManager.cpp" />
     <ClCompile Include="CGamePatches.cpp" />
+    <ClCompile Include="CMissionManager.cpp" />
     <ClCompile Include="CModelManager.cpp" />
     <ClCompile Include="CObjectManager.cpp" />
     <ClCompile Include="CPedManager.cpp" />

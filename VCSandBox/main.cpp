@@ -21,6 +21,7 @@ CWeaponManager			*gWeaponManager = NULL;
 CRadarManager			*gRadarManager = NULL;
 CPickupManager			*gPickupManager = NULL;
 CObjectManager			*gObjectManager = NULL;
+CMissionManager         *gMissionManager = NULL;
 
 // fowrward declaration
 int InstallExceptionCatcher(void(*OnException)(const char* log));
@@ -36,7 +37,7 @@ void DoPatches()
 	gModelManager = new CModelManager();
 	gVehicleManager = new CVehicleManager();
 	gPedManager = new CPedManager();
-    gPopulationManager = new CPopulationManager();
+    //gPopulationManager = new CPopulationManager();
 	gWeaponManager = new CWeaponManager();
 	gRadarManager = new CRadarManager();
 

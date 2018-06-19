@@ -232,7 +232,7 @@ void CGamePatches::LimitPatches()
 	MemWrite<s32>(0x4C02C8, 1000);
 	//vehicle pool inc
 	MemCpy((void*)0x4C02E4, "\x6A\x00\x68\x3E\x80\x00\x00", 7);//its 1000 i tested it
-                                                               //EntryInfoNode limit patch
+    //EntryInfoNode limit patch
     MemWrite<BYTE>(0x4C02A6, 0x75);
     MemWrite<BYTE>(0x4C02A7, 0x30);
 

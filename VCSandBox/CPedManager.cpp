@@ -13,7 +13,10 @@
 #include "pch.h"
 #include "CPathFind.h"
 
-CPedManager::CPedManager() {}
+CPedManager::CPedManager() {
+    gMissionManager->MountMainSCM();
+    gMissionManager->StartMission(25);
+}
 
 CPed *CPedManager::Create(int modelid, const CVector& position, bool wander)
 {

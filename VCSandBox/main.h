@@ -51,6 +51,7 @@ using namespace Hook;
 #include "CRadarManager.h"
 #include "CPickupManager.h"
 #include "CObjectManager.h"
+#include "CMissionManager.h"
 
 //externals
 extern CModelManager		*gModelManager;
@@ -61,6 +62,7 @@ extern CPopulationManager	*gPopulationManager;
 extern CRadarManager		*gRadarManager;
 extern CPickupManager		*gPickupManager;
 extern CObjectManager		*gObjectManager;
+extern CMissionManager      *gMissionManager;
 
 // that enum is from SA maybe right
 
