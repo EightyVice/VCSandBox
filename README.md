@@ -7,5 +7,4 @@ Plugin-SDK team </br>
 iFarbod (old patches & hooks) </br>
 And Ofcourse Vektor for the original source.
 
-# Changes 31 May 2018
-Add GTA_VC with GTA VC path to your System Environment Variables
+# This Project is used as a Core for Grand Theft CO-OP: Vice City
