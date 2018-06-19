@@ -4,7 +4,7 @@
     FILE: CMissionManager.cpp
     DESCRIPTION: Manages the missions in game.
     AUTHOR(S): LemonHaze
-               Zurix
+               Zolika1351
 
     License: GPL v3
     Copyrights (c) 2017-2017 GTC Team
@@ -26,13 +26,8 @@ void CMissionManager::MountMainSCM() {
     
 }
 void CMissionManager::StartMission(unsigned int iMissionID) {
-    /*
-        The main.scm should be mounted before starting any mission
-        You dont have to choose the first mission when its mounted because the first mission will start
-        any way it will be failed, and went to the chosen mission
-    */
     Command<Commands::FAIL_CURRENT_MISSION>();
-    Command<Commands::LOAD_AND_LAUNCH_MISSION>(iMissionID);
+    Command<Commands::LOAD_AND_LAUNCH_MISSION_INTERNAL>(iMissionID);
 }
 void CMissionManager::FailCurrentMission() {
     Command<Commands::FAIL_CURRENT_MISSION>();
