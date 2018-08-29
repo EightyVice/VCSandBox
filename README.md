@@ -6,5 +6,3 @@ ofcourse you need the latest version of PSDK https://github.com/DK22Pac/plugin-s
 Plugin-SDK team </br>
 iFarbod (old patches & hooks) </br>
 And Ofcourse Vektor for the original source.
-
-# This Project is used as a Core for Grand Theft CO-OP: Vice City
